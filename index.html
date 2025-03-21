@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday my dear obsession! 💖</title>
+  <title>Happy Birthday my dear kayla! ❤️</title>
   <style>
     /* Custom CSS */
     :root {
-      --primary-color: #ff69b4;  /* Hot pink accent */
-      --heart-color: #ff99cc;    /* Soft pink for hearts */
+      --primary-color: #ff3366;  /* Red-pink accent */
+      --heart-color: #ff99cc;    /* Soft pink for background hearts */
     }
 
-    /* New heartbeat animation */
     @keyframes heartbeat {
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
@@ -20,13 +19,12 @@
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
-      background: #ffe6f2;  /* Soft pink background */
+      background: #ffe6f2;
       text-align: center;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Floating hearts animation */
     .heart-bg::before,
     .heart-bg::after {
       content: '';
@@ -63,6 +61,7 @@
       color: white;
       position: relative;
       z-index: 1;
+      margin-top: 100px; /* Space for hearts */
     }
 
     .memory-card {
@@ -116,7 +115,6 @@
       z-index: 1;
     }
 
-    /* Additional hearts */
     .heart {
       position: absolute;
       width: 20px;
@@ -129,30 +127,36 @@
   </style>
 </head>
 <body class="heart-bg">
-  <!-- Animated Beating Heart -->
-  <svg width="120" height="120" viewBox="0 0 24 24" 
-       style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); 
-              fill: #ff69b4; animation: heartbeat 1.2s infinite; z-index: 2;">
+  <!-- Two Prominent Red-Pink Hearts -->
+  <svg width="150" height="150" viewBox="0 0 24 24" 
+       style="position: absolute; top: 50px; left: 20px; 
+              fill: #ff3366; animation: heartbeat 1.2s infinite; z-index: 2;">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+  </svg>
+
+  <svg width="150" height="150" viewBox="0 0 24 24" 
+       style="position: absolute; top: 50px; right: 20px; 
+              fill: #ff3366; animation: heartbeat 1.2s infinite; z-index: 2;">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
   </svg>
 
   <div class="header">
-    <h1>🌹❤Happy Birthday my dear kayla❤🌹</h1>
-    <p>❤Every moment with you is a sweet dream i never wanna wake up from❤</p>
+    <h1>🌹❤️ Happy Birthday my dear kayla ❤️🌹</h1>
+    <p>❤️ Every moment with you is a sweet dream I never want to wake up from ❤️</p>
   </div>
 
   <!-- Memory 1 -->
   <div class="memory-card" style="animation-delay: 0.2s;">
     <h2>🌟 Our First Chat</h2>
-    <p>Replace this text with your first memory...</p>
+    <p>[Replace with your first memory...]</p>
     <img src="[image1.jpg]" alt="Our first chat" width="300">
   </div>
 
   <!-- Memory 2 -->
   <div class="memory-card" style="animation-delay: 0.4s;">
-    <h2>💖 The first time i told you i love you 💖</h2>
-    <p>Replace this text with your memory...</p>
-    <img src="[image2.jpg]" alt="Late-night chat" width="300">
+    <h2>💖 The First Time I Said "I Love You"</h2>
+    <p>[Replace with your special memory...]</p>
+    <img src="[image2.jpg]" alt="Special moment" width="300">
   </div>
 
   <!-- Photo Gallery -->
@@ -168,24 +172,24 @@
   <!-- Heartfelt Letter -->
   <div class="memory-card" style="animation-delay: 0.8s;">
     <h2>💌 To You...</h2>
-    <p>Write your heartfelt message here...</p>
+    <p>[Write your heartfelt message here...]</p>
   </div>
 
-  <!-- Floating Hearts -->
+  <!-- Floating Background Hearts -->
   <div class="heart" style="left: 30%; top: 40%; animation-delay: 1s;"></div>
   <div class="heart" style="left: 70%; top: 30%; animation-delay: 2s;"></div>
 
-  <!-- Music Button (Optional) -->
+  <!-- Music Button -->
   <button id="music-btn">🎵</button>
 
   <script>
-    // Background music (optional)
-    const audio = new Audio('[your-song.mp3]'); // Replace with your song URL
+    // Background music setup
+    const audio = new Audio('[your-song.mp3]');
     document.getElementById('music-btn').addEventListener('click', () => {
       audio.play();
     });
 
-    // Scroll-triggered fade-in animations
+    // Scroll animations
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.memory-card').forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
