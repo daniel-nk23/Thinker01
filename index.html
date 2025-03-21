@@ -61,7 +61,7 @@
       color: white;
       position: relative;
       z-index: 1;
-      margin-top: 100px; /* Space for hearts */
+      margin-top: 100px;
     }
 
     .memory-card {
@@ -104,15 +104,22 @@
 
     #music-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px;
+      bottom: 30px;
+      right: 30px;
+      padding: 15px;
       background: var(--primary-color);
       color: white;
       border: none;
       border-radius: 50%;
       cursor: pointer;
-      z-index: 1;
+      z-index: 3;
+      font-size: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .heart {
@@ -145,34 +152,31 @@
     <p>❤️ Every moment with you is a sweet dream I never want to wake up from ❤️</p>
   </div>
 
-  <!-- Memory 1 -->
+  <!-- Memory Cards -->
   <div class="memory-card" style="animation-delay: 0.2s;">
     <h2>🌟 Our First Chat</h2>
-    <p>[Replace with your first memory...]</p>
-    <img src="[image1.jpg]" alt="Our first chat" width="300">
+    <p>[Your first memory here...]</p>
+    <img src="first-chat.jpg" alt="Our first chat" width="300">
   </div>
 
-  <!-- Memory 2 -->
   <div class="memory-card" style="animation-delay: 0.4s;">
     <h2>💖 The First Time I Said "I Love You"</h2>
-    <p>[Replace with your special memory...]</p>
-    <img src="[image2.jpg]" alt="Special moment" width="300">
+    <p>[Your special moment here...]</p>
+    <img src="i-love-you.jpg" alt="Special moment" width="300">
   </div>
 
-  <!-- Photo Gallery -->
   <div class="memory-card" style="animation-delay: 0.6s;">
     <h2>📸 Our Moments</h2>
     <div class="gallery">
-      <img src="[photo1.jpg]" alt="Memory 1">
-      <img src="[photo2.jpg]" alt="Memory 2">
-      <img src="[photo3.jpg]" alt="Memory 3">
+      <img src="memory1.jpg" alt="Memory 1">
+      <img src="memory2.jpg" alt="Memory 2">
+      <img src="memory3.jpg" alt="Memory 3">
     </div>
   </div>
 
-  <!-- Heartfelt Letter -->
   <div class="memory-card" style="animation-delay: 0.8s;">
     <h2>💌 To You...</h2>
-    <p>[Write your heartfelt message here...]</p>
+    <p>[Your heartfelt message here...]</p>
   </div>
 
   <!-- Floating Background Hearts -->
@@ -180,16 +184,42 @@
   <div class="heart" style="left: 70%; top: 30%; animation-delay: 2s;"></div>
 
   <!-- Music Button -->
-  <button id="music-btn">🎵</button>
+  <button id="music-btn">▶️</button>
 
   <script>
-    // Background music setup
-    const audio = new Audio('SpotiDownloader.com - For You - The Calling.mp3');
-    document.getElementById('music-btn').addEventListener('click', () => {
-      audio.play();
+    // Music Player Functionality
+    const audio = new Audio('for-you-the-calling.mp3');
+    let isPlaying = false;
+    const musicBtn = document.getElementById('music-btn');
+
+    // Toggle play/pause
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        musicBtn.textContent = '▶️';
+      } else {
+        audio.play()
+          .then(() => {
+            musicBtn.textContent = '⏸️';
+            isPlaying = true;
+          })
+          .catch(error => {
+            console.log('Audio playback failed:', error);
+          });
+      }
+      isPlaying = !isPlaying;
     });
 
-    // Scroll animations
+    // Pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        audio.pause();
+        musicBtn.textContent = '▶️';
+        isPlaying = false;
+      }
+    });
+
+    // Scroll Animations
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.memory-card').forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
