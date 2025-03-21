@@ -24,7 +24,6 @@
       overflow-x: hidden;
     }
 
-    /* Static Background Hearts */
     .background-heart {
       position: fixed;
       opacity: 0.3;
@@ -39,7 +38,6 @@
       color: white;
       position: relative;
       z-index: 2;
-      margin-top: 100px;
     }
 
     .memory-card {
@@ -170,19 +168,20 @@
   <button id="music-btn">▶️</button>
 
   <script>
-    // Create static background hearts
+    // Create 60 static background hearts
     function createHearts() {
       const container = document.getElementById('hearts-container');
       const heartSVG = `<svg viewBox="0 0 24 24" fill="${getComputedStyle(document.documentElement).getPropertyValue('--heart-color')}"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
       
-      for(let i = 0; i < 40; i++) {
+      for(let i = 0; i < 60; i++) {
         const heart = document.createElement('div');
         heart.className = 'background-heart';
         heart.innerHTML = heartSVG;
-        heart.style.left = Math.random() * 95 + '%';
-        heart.style.top = Math.random() * 95 + '%';
-        heart.style.width = (15 + Math.random() * 30) + 'px';
-        heart.style.opacity = 0.2 + Math.random() * 0.3;
+        heart.style.left = Math.random() * 97 + '%';
+        heart.style.top = Math.random() * 97 + '%';
+        heart.style.width = (10 + Math.random() * 40) + 'px';
+        heart.style.opacity = 0.1 + Math.random() * 0.4;
+        heart.style.transform = `rotate(${Math.random() * 360}deg)`;
         container.appendChild(heart);
       }
     }
