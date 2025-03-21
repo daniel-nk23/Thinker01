@@ -104,19 +104,20 @@
 
     #music-btn {
       position: fixed;
-      bottom: 30px;
+      top: 50%;
       right: 30px;
-      padding: 15px;
+      transform: translateY(-50%);
+      padding: 25px;
       background: var(--primary-color);
       color: white;
       border: none;
       border-radius: 50%;
       cursor: pointer;
       z-index: 3;
-      font-size: 20px;
+      font-size: 30px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -134,15 +135,14 @@
   </style>
 </head>
 <body class="heart-bg">
-  <!-- Two Prominent Red-Pink Hearts -->
-  <svg width="150" height="150" viewBox="0 0 24 24" 
-       style="position: absolute; top: 50px; left: 20px; 
+  <svg width="150" height="150" viewBox="0 0 24 24"
+       style="position: absolute; top: 50px; left: 20px;
               fill: #ff3366; animation: heartbeat 1.2s infinite; z-index: 2;">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
   </svg>
 
-  <svg width="150" height="150" viewBox="0 0 24 24" 
-       style="position: absolute; top: 50px; right: 20px; 
+  <svg width="150" height="150" viewBox="0 0 24 24"
+       style="position: absolute; top: 50px; right: 20px;
               fill: #ff3366; animation: heartbeat 1.2s infinite; z-index: 2;">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
   </svg>
@@ -152,7 +152,6 @@
     <p>❤️ Every moment with you is a sweet dream I never want to wake up from ❤️</p>
   </div>
 
-  <!-- Memory Cards -->
   <div class="memory-card" style="animation-delay: 0.2s;">
     <h2>🌟 Our First Chat</h2>
     <p>[Your first memory here...]</p>
@@ -179,56 +178,7 @@
     <p>[Your heartfelt message here...]</p>
   </div>
 
-  <!-- Floating Background Hearts -->
   <div class="heart" style="left: 30%; top: 40%; animation-delay: 1s;"></div>
   <div class="heart" style="left: 70%; top: 30%; animation-delay: 2s;"></div>
 
-  <!-- Music Button -->
-  <button id="music-btn">▶️</button>
-
-  <script>
-    // Music Player Functionality
-    const audio = new Audio('SpotiDownloader.com - For You - The Calling.mp3');
-    let isPlaying = false;
-    const musicBtn = document.getElementById('music-btn');
-
-    // Toggle play/pause
-    musicBtn.addEventListener('click', () => {
-      if (isPlaying) {
-        audio.pause();
-        musicBtn.textContent = '▶️';
-      } else {
-        audio.play()
-          .then(() => {
-            musicBtn.textContent = '⏸️';
-            isPlaying = true;
-          })
-          .catch(error => {
-            console.log('Audio playback failed:', error);
-          });
-      }
-      isPlaying = !isPlaying;
-    });
-
-    // Pause when tab is hidden
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        audio.pause();
-        musicBtn.textContent = '▶️';
-        isPlaying = false;
-      }
-    });
-
-    // Scroll Animations
-    window.addEventListener('scroll', () => {
-      document.querySelectorAll('.memory-card').forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        if (cardTop < window.innerHeight - 100) {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+  <button id="music-btn">▶️</
