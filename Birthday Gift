@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday, [Her Name]! 💖</title>
+  <style>
+    /* Custom CSS */
+    :root {
+      --primary-color: #ff69b4;  /* Hot pink accent */
+      --heart-color: #ff99cc;    /* Soft pink for hearts */
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background: #ffe6f2;  /* Soft pink background */
+      text-align: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Floating hearts animation */
+    .heart-bg::before,
+    .heart-bg::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--heart-color);
+      border-radius: 50%;
+      animation: float 6s infinite;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .heart-bg::before {
+      left: 10%;
+      top: 20%;
+      transform: rotate(45deg);
+    }
+
+    .heart-bg::after {
+      left: 80%;
+      top: 60%;
+      transform: rotate(-45deg);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-40px) scale(1.2); }
+    }
+
+    .header {
+      padding: 60px;
+      background: linear-gradient(to right, #ff69b4, #ff99cc);
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .memory-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s forwards;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    #music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    /* Additional hearts */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--heart-color);
+      border-radius: 50%;
+      animation: float 6s infinite;
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body class="heart-bg">
+  <div class="header">
+    <h1>Happy Birthday, [Her Name]! 🎀</h1>
+    <p>Every moment with you feels like a sweet dream...</p>
+  </div>
+
+  <!-- Memory 1 -->
+  <div class="memory-card" style="animation-delay: 0.2s;">
+    <h2>🌟 Our First Chat</h2>
+    <p>Replace this text with your first memory...</p>
+    <img src="[image1.jpg]" alt="Our first chat" width="300">
+  </div>
+
+  <!-- Memory 2 -->
+  <div class="memory-card" style="animation-delay: 0.4s;">
+    <h2>💖 The Night We Stayed Up Until 3 AM</h2>
+    <p>Replace this text with your memory...</p>
+    <img src="[image2.jpg]" alt="Late-night chat" width="300">
+  </div>
+
+  <!-- Photo Gallery -->
+  <div class="memory-card" style="animation-delay: 0.6s;">
+    <h2>📸 Our Moments</h2>
+    <div class="gallery">
+      <img src="[photo1.jpg]" alt="Memory 1">
+      <img src="[photo2.jpg]" alt="Memory 2">
+      <img src="[photo3.jpg]" alt="Memory 3">
+    </div>
+  </div>
+
+  <!-- Heartfelt Letter -->
+  <div class="memory-card" style="animation-delay: 0.8s;">
+    <h2>💌 To You...</h2>
+    <p>Write your heartfelt message here...</p>
+  </div>
+
+  <!-- Floating Hearts -->
+  <div class="heart" style="left: 30%; top: 40%; animation-delay: 1s;"></div>
+  <div class="heart" style="left: 70%; top: 30%; animation-delay: 2s;"></div>
+
+  <!-- Music Button (Optional) -->
+  <button id="music-btn">🎵</button>
+
+  <script>
+    // Background music (optional)
+    const audio = new Audio('[your-song.mp3]'); // Replace with your song URL
+    document.getElementById('music-btn').addEventListener('click', () => {
+      audio.play();
+    });
+
+    // Scroll-triggered fade-in animations
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.memory-card').forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < window.innerHeight - 100) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
