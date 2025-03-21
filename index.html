@@ -10,6 +10,13 @@
       --heart-color: #ff99cc;    /* Soft pink for hearts */
     }
 
+    /* New heartbeat animation */
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
@@ -122,6 +129,13 @@
   </style>
 </head>
 <body class="heart-bg">
+  <!-- Animated Beating Heart -->
+  <svg width="120" height="120" viewBox="0 0 24 24" 
+       style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); 
+              fill: #ff69b4; animation: heartbeat 1.2s infinite; z-index: 2;">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+  </svg>
+
   <div class="header">
     <h1>🌹❤Happy Birthday my dear kayla❤🌹</h1>
     <p>❤Every moment with you is a sweet dream i never wanna wake up from❤</p>
