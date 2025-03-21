@@ -5,8 +5,8 @@
   <title>Happy Birthday my dear kayla! ❤️</title>
   <style>
     :root {
-      --primary-color: #ff1493; /* Bright pink-red */
-      --heart-color: #ff69b4;   /* Soft pink */
+      --primary-color: #ff1493;
+      --heart-color: #ff69b4;
     }
 
     @keyframes heartbeat {
@@ -24,29 +24,13 @@
       overflow-x: hidden;
     }
 
-    /* Floating Hearts Background */
-    .floating-heart {
+    /* Static Background Hearts */
+    .background-heart {
       position: fixed;
-      width: 35px;
-      height: 35px;
-      background: var(--primary-color);
-      border-radius: 50%;
-      animation: float 8s infinite;
-      opacity: 0.7;
+      opacity: 0.3;
       z-index: 0;
       pointer-events: none;
-      box-shadow: 0 0 20px rgba(255,20,147,0.4);
-    }
-
-    @keyframes float {
-      0%, 100% { 
-        transform: translateY(0) scale(1); 
-        opacity: 0.7;
-      }
-      50% { 
-        transform: translateY(-100px) scale(1.5);
-        opacity: 1;
-      }
+      fill: var(--heart-color);
     }
 
     .header {
@@ -123,30 +107,25 @@
       transform: translateY(-50%) scale(1.15);
     }
 
-    /* Header Hearts */
     .header-heart {
       position: absolute;
       width: 150px;
       height: 150px;
       animation: heartbeat 1.5s infinite;
       z-index: 1;
+      fill: #ff3366;
     }
   </style>
 </head>
 <body>
   <!-- Background Hearts -->
-  <div class="floating-heart" style="left: 5%; top: 10%; animation-delay: 0s"></div>
-  <div class="floating-heart" style="left: 95%; top: 20%; animation-delay: 1s"></div>
-  <div class="floating-heart" style="left: 15%; top: 70%; animation-delay: 2s"></div>
-  <div class="floating-heart" style="left: 85%; top: 80%; animation-delay: 3s"></div>
-  <div class="floating-heart" style="left: 30%; top: 40%; animation-delay: 4s"></div>
-  <div class="floating-heart" style="left: 70%; top: 60%; animation-delay: 5s"></div>
+  <div id="hearts-container"></div>
 
   <!-- Header Hearts -->
-  <svg class="header-heart" style="left: 20px; top: 50px" viewBox="0 0 24 24" fill="#ff3366">
+  <svg class="header-heart" style="left: 20px; top: 50px" viewBox="0 0 24 24">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
   </svg>
-  <svg class="header-heart" style="right: 20px; top: 50px" viewBox="0 0 24 24" fill="#ff3366">
+  <svg class="header-heart" style="right: 20px; top: 50px" viewBox="0 0 24 24">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
   </svg>
 
@@ -158,13 +137,13 @@
   <!-- Memory Cards -->
   <div class="memory-card" style="animation-delay: 0.2s;">
     <h2>💕 Our First Chat💕</h2>
-    <p>[Your first memory here...]</p>
+    <p>The moment our hearts first connected through words...</p>
     <img src="first-chat.jpg" alt="Our first chat" width="300">
   </div>
 
   <div class="memory-card" style="animation-delay: 0.4s;">
     <h2>💖 The First Time I Said "I Love You"💖</h2>
-    <p>[Your special moment here...]</p>
+    <p>That magical moment when my heart found its true voice...</p>
     <img src="i-love-you.jpg" alt="Special moment" width="300">
   </div>
 
@@ -179,22 +158,31 @@
 
   <div class="memory-card" style="animation-delay: 0.8s;">
     <h2>💌 To You My Dear Obsession💌 </h2>
-    <p>[Your heartfelt message here...]</p>
+    <p>My dearest Kayla,<br><br>
+    On this special day, I want you to know that you're the melody to my heart's song, 
+    the light that guides me through every darkness, and the reason I believe in forever. 
+    May this year bring you as much joy as you've brought into my life. Happy Birthday my love!<br><br>
+    Forever Yours,<br>
+    [Your Name]</p>
   </div>
 
   <!-- Music Control -->
   <button id="music-btn">▶️</button>
 
   <script>
-    // Generate Random Hearts
+    // Create static background hearts
     function createHearts() {
-      const container = document.body;
-      for(let i = 0; i < 10; i++) {
+      const container = document.getElementById('hearts-container');
+      const heartSVG = `<svg viewBox="0 0 24 24" fill="${getComputedStyle(document.documentElement).getPropertyValue('--heart-color')}"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+      
+      for(let i = 0; i < 40; i++) {
         const heart = document.createElement('div');
-        heart.className = 'floating-heart';
+        heart.className = 'background-heart';
+        heart.innerHTML = heartSVG;
         heart.style.left = Math.random() * 95 + '%';
         heart.style.top = Math.random() * 95 + '%';
-        heart.style.animationDelay = Math.random() * 12 + 's';
+        heart.style.width = (15 + Math.random() * 30) + 'px';
+        heart.style.opacity = 0.2 + Math.random() * 0.3;
         container.appendChild(heart);
       }
     }
