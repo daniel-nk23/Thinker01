@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <title>Happy Birthday my dear kayla! ❤️</title>
   <style>
-    /* Custom CSS */
     :root {
-      --primary-color: #ff3366;  /* Red-pink accent */
-      --heart-color: #ff99cc;    /* Soft pink for background hearts */
+      --primary-color: #ff3366;
+      --heart-color: #ff99cc;
     }
 
     @keyframes heartbeat {
@@ -140,7 +139,7 @@
   </style>
 </head>
 <body class="heart-bg">
-  <!-- Two Prominent Red-Pink Hearts -->
+  <!-- Animated Hearts -->
   <svg width="150" height="150" viewBox="0 0 24 24" 
        style="position: absolute; top: 50px; left: 20px; 
               fill: #ff3366; animation: heartbeat 1.2s infinite; z-index: 2;">
@@ -185,20 +184,32 @@
     <p>[Your heartfelt message here...]</p>
   </div>
 
-  <!-- Floating Background Hearts -->
+  <!-- Floating Hearts -->
   <div class="heart" style="left: 30%; top: 40%; animation-delay: 1s;"></div>
   <div class="heart" style="left: 70%; top: 30%; animation-delay: 2s;"></div>
 
-  <!-- Centered Music Button -->
+  <!-- Music Control -->
   <button id="music-btn">▶️</button>
 
   <script>
-    // Music Player Functionality
-    const audio = new Audio('SpotiDownloader.com - For You - The Calling.mp3');
+    // Music Player with Infinite Loop
+    const playlist = [
+      'SpotiDownloader.com - For You - The Calling.mp3',
+      'SpotiDownloader.com - Glad You Came - The Wanted.mp3'
+    ];
+    
+    let currentTrack = 0;
+    const audio = new Audio(playlist[currentTrack]);
     let isPlaying = false;
     const musicBtn = document.getElementById('music-btn');
 
-    // Toggle play/pause
+    audio.addEventListener('ended', () => {
+      currentTrack = (currentTrack + 1) % playlist.length;
+      audio.src = playlist[currentTrack];
+      audio.play();
+      musicBtn.textContent = '⏸️';
+    });
+
     musicBtn.addEventListener('click', () => {
       if (isPlaying) {
         audio.pause();
@@ -210,13 +221,12 @@
             isPlaying = true;
           })
           .catch(error => {
-            console.log('Audio playback failed:', error);
+            console.log('Playback error:', error);
           });
       }
       isPlaying = !isPlaying;
     });
 
-    // Pause when tab is hidden
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         audio.pause();
@@ -225,7 +235,6 @@
       }
     });
 
-    // Scroll Animations
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.memory-card').forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
