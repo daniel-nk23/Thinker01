@@ -5,13 +5,13 @@
   <title>Happy Birthday my dear kayla! ❤️</title>
   <style>
     :root {
-      --primary-color: #ff3366;
-      --heart-color: #ff99cc;
+      --primary-color: #ff1493; /* Bright pink-red */
+      --heart-color: #ff69b4;   /* Soft pink */
     }
 
     @keyframes heartbeat {
       0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+      50% { transform: scale(1.2); }
       100% { transform: scale(1); }
     }
 
@@ -24,34 +24,29 @@
       overflow-x: hidden;
     }
 
-    .heart-bg::before,
-    .heart-bg::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: var(--heart-color);
+    /* Floating Hearts Background */
+    .floating-heart {
+      position: fixed;
+      width: 35px;
+      height: 35px;
+      background: var(--primary-color);
       border-radius: 50%;
-      animation: float 6s infinite;
-      opacity: 0.4;
+      animation: float 8s infinite;
+      opacity: 0.7;
       z-index: 0;
-    }
-
-    .heart-bg::before {
-      left: 10%;
-      top: 20%;
-      transform: rotate(45deg);
-    }
-
-    .heart-bg::after {
-      left: 80%;
-      top: 60%;
-      transform: rotate(-45deg);
+      pointer-events: none;
+      box-shadow: 0 0 20px rgba(255,20,147,0.4);
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-40px) scale(1.2); }
+      0%, 100% { 
+        transform: translateY(0) scale(1); 
+        opacity: 0.7;
+      }
+      50% { 
+        transform: translateY(-100px) scale(1.5);
+        opacity: 1;
+      }
     }
 
     .header {
@@ -59,22 +54,23 @@
       background: linear-gradient(to right, #ff69b4, #ff99cc);
       color: white;
       position: relative;
-      z-index: 1;
+      z-index: 2;
       margin-top: 100px;
     }
 
     .memory-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      padding: 20px;
-      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 30px auto;
       max-width: 600px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
       opacity: 0;
       transform: translateY(20px);
       animation: fadeIn 1s forwards;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      border: 1px solid rgba(0,0,0,0.05);
     }
 
     @keyframes fadeIn {
@@ -84,7 +80,7 @@
     .gallery {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
       justify-content: center;
       padding: 20px;
     }
@@ -93,30 +89,30 @@
       width: 200px;
       height: 200px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 15px;
       transition: transform 0.3s;
     }
 
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
 
     #music-btn {
       position: fixed;
-      right: 20px;
+      right: 25px;
       top: 50%;
       transform: translateY(-50%);
-      padding: 20px;
+      padding: 25px;
       background: var(--primary-color);
       color: white;
       border: none;
       border-radius: 50%;
       cursor: pointer;
       z-index: 3;
-      font-size: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      width: 70px;
-      height: 70px;
+      font-size: 35px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      width: 80px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -124,31 +120,33 @@
     }
 
     #music-btn:hover {
-      transform: translateY(-50%) scale(1.1);
+      transform: translateY(-50%) scale(1.15);
     }
 
-    .heart {
+    /* Header Hearts */
+    .header-heart {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: var(--heart-color);
-      border-radius: 50%;
-      animation: float 6s infinite;
-      opacity: 0.4;
+      width: 150px;
+      height: 150px;
+      animation: heartbeat 1.5s infinite;
+      z-index: 1;
     }
   </style>
 </head>
-<body class="heart-bg">
-  <!-- Animated Hearts -->
-  <svg width="150" height="150" viewBox="0 0 24 24" 
-       style="position: absolute; top: 50px; left: 20px; 
-              fill: #ff3366; animation: heartbeat 1.2s infinite; z-index: 2;">
+<body>
+  <!-- Background Hearts -->
+  <div class="floating-heart" style="left: 5%; top: 10%; animation-delay: 0s"></div>
+  <div class="floating-heart" style="left: 95%; top: 20%; animation-delay: 1s"></div>
+  <div class="floating-heart" style="left: 15%; top: 70%; animation-delay: 2s"></div>
+  <div class="floating-heart" style="left: 85%; top: 80%; animation-delay: 3s"></div>
+  <div class="floating-heart" style="left: 30%; top: 40%; animation-delay: 4s"></div>
+  <div class="floating-heart" style="left: 70%; top: 60%; animation-delay: 5s"></div>
+
+  <!-- Header Hearts -->
+  <svg class="header-heart" style="left: 20px; top: 50px" viewBox="0 0 24 24" fill="#ff3366">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
   </svg>
-
-  <svg width="150" height="150" viewBox="0 0 24 24" 
-       style="position: absolute; top: 50px; right: 20px; 
-              fill: #ff3366; animation: heartbeat 1.2s infinite; z-index: 2;">
+  <svg class="header-heart" style="right: 20px; top: 50px" viewBox="0 0 24 24" fill="#ff3366">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
   </svg>
 
@@ -184,15 +182,40 @@
     <p>[Your heartfelt message here...]</p>
   </div>
 
-  <!-- Floating Hearts -->
-  <div class="heart" style="left: 30%; top: 40%; animation-delay: 1s;"></div>
-  <div class="heart" style="left: 70%; top: 30%; animation-delay: 2s;"></div>
-
   <!-- Music Control -->
   <button id="music-btn">▶️</button>
 
   <script>
-    // Music Player with Infinite Loop
+    // Generate Random Hearts
+    function createHearts() {
+      const container = document.body;
+      for(let i = 0; i < 10; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.style.left = Math.random() * 95 + '%';
+        heart.style.top = Math.random() * 95 + '%';
+        heart.style.animationDelay = Math.random() * 12 + 's';
+        container.appendChild(heart);
+      }
+    }
+    createHearts();
+
+    // Scroll Animations
+    function checkCards() {
+      document.querySelectorAll('.memory-card').forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < window.innerHeight * 0.8) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }
+      });
+    }
+
+    window.addEventListener('load', checkCards);
+    window.addEventListener('scroll', checkCards);
+    window.addEventListener('resize', checkCards);
+
+    // Music Player
     const playlist = [
       'SpotiDownloader.com - For You - The Calling.mp3',
       'SpotiDownloader.com - Glad You Came - The Wanted.mp3'
@@ -207,7 +230,6 @@
       currentTrack = (currentTrack + 1) % playlist.length;
       audio.src = playlist[currentTrack];
       audio.play();
-      musicBtn.textContent = '⏸️';
     });
 
     musicBtn.addEventListener('click', () => {
@@ -220,9 +242,7 @@
             musicBtn.textContent = '⏸️';
             isPlaying = true;
           })
-          .catch(error => {
-            console.log('Playback error:', error);
-          });
+          .catch(error => console.log('Playback error:', error));
       }
       isPlaying = !isPlaying;
     });
@@ -233,16 +253,6 @@
         musicBtn.textContent = '▶️';
         isPlaying = false;
       }
-    });
-
-    window.addEventListener('scroll', () => {
-      document.querySelectorAll('.memory-card').forEach(card => {
-        const cardTop = card.getBoundingClientRect().top;
-        if (cardTop < window.innerHeight - 100) {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }
-      });
     });
   </script>
 </body>
